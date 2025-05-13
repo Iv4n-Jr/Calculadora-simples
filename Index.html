@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcule!</title>
+    <style>
+        body {
+            background-color: rgb(7, 7, 7);
+            display: flex; /* Ativa o flexbox no body */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Faz o body ocupar toda a altura da janela */
+            margin: 0; /* Remove margens padrão */
+}
+
+        #Principal{
+            background-color: rgb(49, 49, 49);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 350px;
+            border-radius: 10%;
+            max-height: 500px;
+        }
+
+        .fundo1{
+            background-color:  rgb(196, 39, 39);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            height: 100%;
+        }
+
+        .botoes{
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .botao{
+            background-color: gray;
+            color: white;
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            margin-top: 5%;
+            border-radius: 10%;
+        }
+
+        .botaodiferente{
+            background-color: gray;
+            color: white;
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            border-radius: 10%;
+        }
+
+        #caixa{
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+            width: 200px;
+            height: 50px;
+            text-align: right;
+            font: normal 20px Digital;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fundo1">
+    <div id="Principal">
+    <!--Caixa de texto que será inserido os valores e operadores-->
+    <div><input type="text" name="caixa" id="caixa" value="0"></div>
+        <div class="botoes">
+        <div>
+        <!--Valores e operadores 7, 8, 9 e "+" -->
+        <input class="botao" type="button" name="botao7" id="botao7" value="7" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botao8" id="botao8" value="8" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botao9" id="botao9" value="9" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botaosoma" id="botaosoma" value="+" onclick="inserir_operador()">
+        </div>
+        <div>
+        <!--Valores e operadores 4, 5, 6 e "-" -->
+        <input class="botao" type="button" name="botao4" id="botao4" value="4" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botao5" id="botao5" value="5" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botao6" id="botao6" value="6" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botaosub" id="botaosub" value="-" onclick="inserir_operador()">
+        </div>
+        <div>
+        <!--Valores e operadores 1, 2, 3 e "*" -->
+        <input class="botao" type="button" name="botao1" id="botao1" value="1" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botao2" id="botao2" value="2" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botao3" id="botao3" value="3" onclick="inserir_valor()">
+        <input class="botao" type="button" name="botaomult" id="botaomult" value="*" onclick="inserir_operador()">
+        </div>
+        <div>
+        <!--Valores e operadores 0, C, "=" e "/" -->
+        <input class="botao" type="button" name="botao0" id="botao0" value="0" onclick="inserir_valor()">
+        <input class="botaodiferente" type="button" name="botaoapagar" id="botaoapagar" value="C" onclick="apagar()">
+        <input class="botaodiferente" type="button" name="botaoigual" id="botaoigual" value="=" onclick="calcular()">
+        <input class="botao" type="button" name="botaodiv" id="botaodiv" value="/" onclick="inserir_operador()">
+        </div>
+    </div>
+    </div>
+    </div>
+    <script>
+        var caixa = window.document.getElementById('caixa')
+
+        function inserir_valor(){ // função para inserir valores
+            var valor = window.event.target.value
+            if (caixa.value == '0'){
+                caixa.value = valor
+            } else {
+                caixa.value += valor
+            }
+        }
+
+        function apagar(){ //função para zerar a caixa
+            caixa.value = '0'
+        }
+
+        function inserir_operador(){ // função para inserir operadores
+            var operador = window.event.target.value
+            if (caixa.value == '0'){
+                caixa.value = operador
+            } else {
+                caixa.value += operador
+            }
+        }
+
+        function calcular(){ // função para calcular o resultado
+            var resultado = eval(caixa.value)
+            caixa.value = resultado;
+        }
+
+    </script>
+</body>
+</html>
